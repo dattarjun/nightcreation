@@ -2,14 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>{{ title }} - Travel Veda</title>
+
+    <!-- Link to CSS files -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/itenerary.css') }}">
-    <!-- Add other CSS files here as needed -->
+
+    <!-- Mapbox CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar">
@@ -26,5 +30,17 @@
     <div class="content">
         {% block content %}{% endblock %}
     </div>
+
+    <!-- Mapbox JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js"></script>
+    <script>
+        mapboxgl.accessToken = 'your_mapbox_access_token';
+        var map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // map style
+            center: [longitude, latitude], // starting position [lng, lat]
+            zoom: 9 // starting zoom
+        });
+    </script>
 </body>
 </html>

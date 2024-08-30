@@ -2,6 +2,7 @@
 {% block content %}
 <section class="addtrip">
     <h2>Add a New Trip</h2>
+
     <form method="POST" action="{{ url_for('addtrip') }}">
         <label for="title">Trip Title:</label>
         <input type="text" id="title" name="title" required>
@@ -17,5 +18,16 @@
         
         <button type="submit">Add Trip</button>
     </form>
+            <!-- Mapbox map -->
+            <div id='map' style="width: 100%; height: 400px;"></div>
+        </form>
+    </section>
+    <script>
+        mapboxgl.accessToken = 'your_mapbox_access_token';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [0, 0], // Example center; adjust as needed
+            zoom: 2
 </section>
 {% endblock %}
