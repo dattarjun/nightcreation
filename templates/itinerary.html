@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="itinerary">
+    <h2>Itinerary for {{ trip.trip_name }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in trip.events %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.start_time }}</td>
+                <td>{{ event.end_time }}</td>
+                <td>{{ event.location }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('add_event', trip_id=trip.id) }}" class="btn">Add Event</a>
+</section>
+{% endblock %}

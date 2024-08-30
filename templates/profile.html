@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ username }}'s Profile - Travel Veda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>{{ username }}'s Profile</h2>
+        <h3>My Itineraries</h3>
+        <ul>
+            {% for itinerary in itineraries %}
+                <li>
+                    <h4>{{ itinerary[1] }}</h4>
+                    <p>{{ itinerary[2] }}</p>
+                    <p><strong>Start Date:</strong> {{ itinerary[3] }}</p>
+                    <p><strong>End Date:</strong> {{ itinerary[4] }}</p>
+                </li>
+            {% else %}
+                <p>No itineraries found.</p>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('addtrip') }}" class="btn btn-primary">Add New Trip</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+    </div>
+</body>
+</html>
+<!--\\\\\
+{% extends 'base.html' %}
+{% block content %}
+<section class="profile">
+    <h1>{{ username }}'s Profile</h1>
+    <h2>Travel Itinerary</h2>
+
+    {% for itinerary in itineraries %}
+    <h3>{{ itinerary.title }}</h3>
+
+    {% set current_itinerary = itinerary.id %}
+    {% set day_count = 1 %}
+
+    <table>
+        {% for day in itinerary.details %}
+        <tr>
+            <td>DAY {{ day_count }}</td>
+            <td>{{ day.day_name }}, {{ day.date.strftime('%A, %d %b %Y') }}</td>
+        </tr>
+        <tr>
+            <td>{{ day.time.strftime('%I:%M %p') }}</td>
+            <td>{{ day.location }}</td>
+        </tr>
+        {% set day_count = day_count + 1 %}
+        {% endfor %}
+    </table>
+
+    {% endfor %}
+    <a href="{{ url_for('addtrip') }}" class="btn">Add New Trip</a>
+    <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+</section>
+{% endblock %}

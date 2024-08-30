@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+    <h1>Welcome to Travel Veda</h1>
+    <p>Plan your trips dynamically with our advanced itinerary planner.</p>
+    <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
+    <a href="{{ url_for('login') }}" class="btn">Login</a>
+</section>
+
+<section class="celeb-endorsements">
+    <h2>Endorsed by Celebrities</h2>
+    <div class="celebs">
+        <div class="celeb">
+            <img src="{{ url_for('static', filename='images/celeb1.jpg') }}" alt="Celebrity 1">
+            <p>"Travel Veda is the best travel planner!" - Celebrity 1</p>
+        </div>
+        <div class="celeb">
+            <img src="{{ url_for('static', filename='images/celeb2.jpg') }}" alt="Celebrity 2">
+            <p>"I love using Travel Veda for all my trips!" - Celebrity 2</p>
+        </div>
+        <div class="celeb">
+            <img src="{{ url_for('static', filename='images/celeb3.jpg') }}" alt="Celebrity 3">
+            <p>"Travel Veda makes planning so easy!" - Celebrity 3</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

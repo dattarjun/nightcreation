@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="addtrip">
+    <h2>Add a New Trip</h2>
+    <form method="POST" action="{{ url_for('addtrip') }}">
+        <label for="title">Trip Title:</label>
+        <input type="text" id="title" name="title" required>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+        
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required>
+        
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required>
+        
+        <button type="submit">Add Trip</button>
+    </form>
+</section>
+{% endblock %}
